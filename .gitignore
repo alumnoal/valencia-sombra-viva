@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Environment
+.env
+*.env.local
+
+# Node
+node_modules/
+dist/
+.DS_Store
+
+# Data (archivos grandes, no subir al repo)
+data/raw/*.csv
+data/raw/*.json
+data/raw/*.shp
+data/raw/*.zip
+data/raw/mdt/
+data/raw/mds/
+data/raw/mdo/
+data/processed/
+
+# PDFs del concurso (son documentos locales)
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+.vercel

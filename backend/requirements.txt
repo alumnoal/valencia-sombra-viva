@@ -1,0 +1,32 @@
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+pydantic==2.7.1
+pydantic-settings==2.2.1
+
+# Geoespacial
+geopandas==0.14.4
+shapely==2.0.4
+pyproj==3.6.1
+fiona==1.9.6
+rasterio==1.4.4
+
+# Cálculo solar
+pysolar==0.11
+
+# Datos y análisis
+pandas==2.2.2
+numpy==1.26.4
+requests==2.31.0
+httpx==0.27.0
+
+# Caché y rendimiento
+cachetools==5.3.3
+
+# Routing
+osmnx==1.9.4
+networkx==3.3
+scipy==1.13.0
+
+# Testing
+pytest==8.2.0
+httpx==0.27.0

@@ -1,0 +1,42 @@
+# fly.toml app configuration file for valencia-sombra-viva
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'valencia-sombra-viva'
+primary_region = 'cdg'
+
+[build]
+
+[env]
+  DATA_DIR = '/data'
+  DISABLE_WARMUP = ''
+
+[[mounts]]
+  source = 'valencia_data'
+  destination = '/data'
+  initial_size = '3gb'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'off'
+  auto_start_machines = true
+  min_machines_running = 1
+  [http_service.concurrency]
+    type = 'requests'
+    hard_limit = 25
+    soft_limit = 20
+
+[checks]
+  [checks.health]
+    type = 'http'
+    interval = '30s'
+    timeout = '10s'
+    grace_period = '1m0s'
+    method = 'GET'
+    path = '/health'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '2048mb'

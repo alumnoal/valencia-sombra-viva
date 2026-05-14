@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: valencia-sombra-viva-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    region: frankfurt
+    healthCheckPath: /health
+    envVars:
+      - key: HF_DATASET_URL
+        value: https://huggingface.co/datasets/alumnoal/valencia-sombra-data/resolve/main
+      - key: DATA_DIR
+        value: /app/data
+      - key: DISABLE_WARMUP
+        value: "1"
+      - key: ALLOWED_ORIGINS
+        value: https://valencia-sombra-viva.vercel.app
+      - key: GDAL_CACHEMAX
+        value: "256"
+      - key: CPL_VSIL_CURL_CACHE_SIZE
+        value: "67108864"
+      - key: GDAL_HTTP_MAX_RETRY
+        value: "3"
+      - key: GDAL_HTTP_RETRY_DELAY
+        value: "2"
