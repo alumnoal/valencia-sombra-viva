@@ -13,11 +13,11 @@ import pysolar.solar as solar
 import pysolar.radiation as radiation
 
 
-MADRID_LAT = 40.4168
-MADRID_LON = -3.7038
+VALENCIA_LAT = 39.4699
+VALENCIA_LON = -0.3763
 
 
-def get_sun_position(dt: datetime, lat: float = MADRID_LAT, lon: float = MADRID_LON) -> dict:
+def get_sun_position(dt: datetime, lat: float = VALENCIA_LAT, lon: float = VALENCIA_LON) -> dict:
     """
     Devuelve azimut y elevación del sol para una coordenada y momento dado.
 

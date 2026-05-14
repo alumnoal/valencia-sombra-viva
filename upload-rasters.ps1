@@ -24,14 +24,13 @@ if (Test-Path $stateFile) {
 
 $filesToUpload = @(
     @{
-        # TODO: actualizar rutas locales cuando tengas los rasters de Valencia (ICV)
-        local  = "C:\Users\gonza\Desktop\Valencia Sombra Viva\data\raw\mds\MDS_Valencia_1m.tif"
-        remote = "/data/raw/mds/MDS_Valencia_1m.tif"
+        local  = "C:\Users\gonza\Desktop\Valencia Sombra Viva\data\raw\mds\MDS_Valencia_2m.tif"
+        remote = "/data/raw/mds/MDS_Valencia_2m.tif"
         prefix = "mds"
     },
     @{
-        local  = "C:\Users\gonza\Desktop\Valencia Sombra Viva\data\raw\mdt\MDT_Valencia_COG.tif"
-        remote = "/data/raw/mdt/MDT_Valencia_COG.tif"
+        local  = "C:\Users\gonza\Desktop\Valencia Sombra Viva\data\raw\mdt\MDT_Valencia_2m.tif"
+        remote = "/data/raw/mdt/MDT_Valencia_2m.tif"
         prefix = "mdt"
     },
     @{

@@ -63,7 +63,7 @@ def cargar_padron() -> pd.DataFrame:
         except Exception as e:
             print(f"[WARN] padron_manzanas.json no se pudo parsear: {e}")
 
-    # Intento 2: CSV formato Madrid (herencia)
+    # Intento 2: CSV formato legacy
     path_csv = RAW / "padron_barrios.csv"
     if path_csv.exists():
         try:
@@ -88,7 +88,7 @@ def mayores_por_distrito() -> dict[str, dict]:
         if df.empty:
             return {}
 
-        # Formato Madrid (CSV con COD_EDAD_INT, COD_DISTRITO, DESC_DISTRITO)
+        # Formato CSV legacy (COD_EDAD_INT, COD_DISTRITO, DESC_DISTRITO)
         if all(c in df.columns for c in ("COD_EDAD_INT", "COD_DISTRITO", "DESC_DISTRITO")):
             df["total"] = sum(
                 pd.to_numeric(df.get(c, 0), errors="coerce").fillna(0)

@@ -5,7 +5,7 @@ const BASE_URL = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
 const api = axios.create({ baseURL: `${BASE_URL}/api`, timeout: 10000 });
 const apiLenta = axios.create({ baseURL: `${BASE_URL}/api`, timeout: 120000 }); // ruta fresca puede tardar
 
-export async function getSunPosition(lat = 40.4168, lon = -3.7038) {
+export async function getSunPosition(lat = 39.4699, lon = -0.3763) {
   const { data } = await api.get("/sombra/sol", { params: { lat, lon } });
   return data;
 }

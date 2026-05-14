@@ -26,8 +26,8 @@ def get_refugios_cercanos(
 
 @router.get("/alerta-calor")
 def get_refugios_alerta(
-    lat: float = Query(40.4168),
-    lon: float = Query(-3.7038),
+    lat: float = Query(39.4699),
+    lon: float = Query(-0.3763),
     radio_m: float = Query(1000),
 ):
     """

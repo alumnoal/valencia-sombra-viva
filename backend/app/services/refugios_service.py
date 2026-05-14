@@ -132,10 +132,10 @@ def _parse_geojson(
     return result
 
 
-# ─── Parser de fallback: JSON-LD del Ayuntamiento de Madrid (herencia) ────────
+# ─── Parser de fallback: JSON-LD legacy ──────────────────────────────────────
 
 def _parse_ld_json(path: Path, tipo: str) -> list[dict]:
-    """Parsea JSON-LD del Ayuntamiento de Madrid (@graph con location.latitude/longitude)."""
+    """Parsea JSON-LD legacy (@graph con location.latitude/longitude)."""
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
     graph = data.get("@graph", [])
@@ -167,7 +167,7 @@ def _extract_distrito(uri: str) -> str:
 
 
 def _parse_farmacias(path: Path) -> list[dict]:
-    """Parsea farmacias_guardia.csv — formato Madrid (herencia)."""
+    """Parsea farmacias_guardia.csv — formato CSV legacy."""
     df = pd.read_csv(path, sep=";", encoding="utf-8-sig")
     df.columns = [c.strip() for c in df.columns]
     df_unico = df.drop_duplicates(subset=["Farmacia"])
