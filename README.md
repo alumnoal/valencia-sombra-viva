@@ -31,7 +31,7 @@ Cuando la calidad del aire es mala o hay alerta de calor, activa automáticament
 
 | Dataset | Fuente | Uso |
 |---|---|---|
-| MDS02 2m (hojas 0770/0795) | CNIG Centro de Descargas | Sombras de edificios |
+| MDS02 2m (hojas 0724/0747) | CNIG Centro de Descargas | Sombras de edificios |
 | Calidad del aire RVVCCA | Geoportal Valencia (capa 156) | Índice de contaminación |
 | Recursos sociales mayores | Geoportal Valencia `SS_MAYORES.json` | Refugios climáticos |
 | Equipamientos municipales | Geoportal Valencia `v_infociudad.json` | Bibliotecas como refugio |
