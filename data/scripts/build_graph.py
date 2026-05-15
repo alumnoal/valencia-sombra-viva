@@ -14,7 +14,7 @@ GRAPHML_PATH = OUT_DIR / "osm_walk_graph.graphml"
 PICKLE_PATH  = OUT_DIR / "osm_walk_graph_25830.pkl"
 
 # Área urbana central de Valencia (mismo bbox que routing_service.py)
-# (norte, sur, este, oeste) para osmnx
+# osmnx 2.x truncate_graph_bbox usa (left, bottom, right, top) = (west, south, east, north)
 NORTH, SOUTH = 39.495, 39.445
 EAST,  WEST  = -0.340, -0.400
 
@@ -44,7 +44,7 @@ def build():
 
     G = ox.truncate.truncate_graph_bbox(
         G,
-        bbox=(NORTH, SOUTH, EAST, WEST),
+        bbox=(WEST, SOUTH, EAST, NORTH),   # osmnx 2.x: (left, bottom, right, top)
     )
     G = ox.truncate.largest_component(G, strongly=True)
 

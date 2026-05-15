@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getSunPosition } from "../services/api";
 
-export function useSol(lat = 40.4168, lon = -3.7038) {
+export function useSol(lat = 39.4699, lon = -0.3763) {
   const [sol, setSol] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

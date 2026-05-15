@@ -17,7 +17,8 @@ from pathlib import Path
 
 import pandas as pd
 
-RAW = Path(__file__).parent.parent.parent / "data" / "raw"
+import os as _os
+RAW = Path(_os.environ.get("DATA_DIR", "")) / "raw" if _os.environ.get("DATA_DIR") else Path(__file__).parent.parent.parent.parent / "data" / "raw"
 
 TIPOS_LABEL = {
     "centro_mayores": "Centro de Mayores",

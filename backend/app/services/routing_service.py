@@ -187,12 +187,19 @@ def _open_mdt():
 def _load_window(src, x_min, y_min, x_max, y_max, buffer=0):
     """Carga una ventana del raster en memoria como array numpy."""
     import rasterio.windows
+    import numpy as np
     win = rasterio.windows.from_bounds(
         x_min - buffer, y_min - buffer, x_max + buffer, y_max + buffer,
         src.transform,
     )
     # Recortar a los límites del raster
-    win = win.intersection(rasterio.windows.Window(0, 0, src.width, src.height))
+    raster_win = rasterio.windows.Window(0, 0, src.width, src.height)
+    try:
+        win = win.intersection(raster_win)
+    except Exception:
+        return None, None, None
+    if win.width <= 0 or win.height <= 0:
+        return None, None, None
     data = src.read(1, window=win)
     win_transform = rasterio.windows.transform(win, src.transform)
     nodata = src.nodata
