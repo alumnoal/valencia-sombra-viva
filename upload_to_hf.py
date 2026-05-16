@@ -1,13 +1,21 @@
-"""Sube los rasters de Valencia al dataset de HuggingFace."""
+"""Sube los rasters de Valencia al dataset de HuggingFace.
+
+Uso:
+    HF_TOKEN=hf_xxx python upload_to_hf.py
+"""
 import os
 import sys
 from pathlib import Path
 from huggingface_hub import HfApi
 
-TOKEN = "$HF_TOKEN_PLACEHOLDER"
+TOKEN = os.environ.get("HF_TOKEN", "")
+if not TOKEN:
+    print("ERROR: define la variable de entorno HF_TOKEN con tu token de HuggingFace")
+    sys.exit(1)
+
 USERNAME = "alumnoal"
 REPO_ID = f"{USERNAME}/valencia-sombra-data"
-DATA_ROOT = Path(r"C:\Users\gonza\Desktop\Valencia Sombra Viva\data")
+DATA_ROOT = Path(__file__).parent / "data"
 
 FILES = [
     (DATA_ROOT / "raw" / "mds" / "MDS_Valencia_2m.tif",          "MDS_Valencia_2m.tif"),
