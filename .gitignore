@@ -29,6 +29,11 @@ data/raw/mds/
 data/raw/mdo/
 data/processed/
 
+# Tiles CNIG descargados (en raíz o en data/)
+MDS02*.tif
+MDS02*.TIF
+cache/
+
 # PDFs del concurso (son documentos locales)
 *.pdf
 
