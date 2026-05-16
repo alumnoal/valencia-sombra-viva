@@ -15,7 +15,9 @@ services:
       - key: DISABLE_WARMUP
         value: "1"
       - key: ALLOWED_ORIGINS
-        value: https://valencia-sombra-viva.vercel.app
+        value: "*"
+      - key: DEBUG
+        value: "true"
       - key: GDAL_CACHEMAX
         value: "256"
       - key: CPL_VSIL_CURL_CACHE_SIZE
