@@ -3,10 +3,9 @@ import React, { Suspense, lazy } from 'react';
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
 const ValenciaIcon = ({ size = 22 }) => (
-  <svg width={size} height={size} viewBox="0 0 20 20" fill="none">
-    <circle cx="3.5" cy="3.5" r="2.2" fill="#FF6B1A"/>
-    <rect x="8" y="4" width="4.5" height="13" rx="0.5" fill="#FF6B1A"/>
-    <path d="M12.5 8 L18 13.5 L18 17 L12.5 17 Z" fill="#FF6B1A" fillOpacity="0.38"/>
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="#FF6B1A">
+    <path d="M23,14a1,1,0,0,1-1,1H2a1,1,0,0,1,0-2H22A1,1,0,0,1,23,14Zm-3,3.5a1,1,0,0,0-1-1H5a1,1,0,0,0,0,2H19A1,1,0,0,0,20,17.5ZM8,20a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2ZM4,12a1,1,0,0,0,1-1,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9,9,0,0,0,3,11,1,1,0,0,0,4,12Z"/>
+    <path d="M10 5.5 L12 9.5 L14 5.5" stroke="#070709" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
