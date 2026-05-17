@@ -4,7 +4,7 @@ import RutaFresca from "./components/RutaFresca/RutaFresca";
 import AlertaCalor from "./components/AlertaCalor/AlertaCalor";
 import LandingPage from "./components/Landing/LandingPage";
 import Tutorial from "./components/Tutorial/Tutorial";
-import ProyectoPage from "./components/Proyecto/ProyectoPage";
+import ProyectoPage, { ValenciaIcon } from "./components/Proyecto/ProyectoPage";
 import { useSol } from "./hooks/useSol";
 import { useRefugios } from "./hooks/useRefugios";
 import { getEstacionesAire, getResumenAire, getIndiceSombra, getRutaFresca } from "./services/api";
@@ -24,11 +24,6 @@ function useIsMobile() {
   return mob;
 }
 
-const SunsetLogo = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="#FF6B1A">
-    <path d="M23,14a1,1,0,0,1-1,1H2a1,1,0,0,1,0-2H22A1,1,0,0,1,23,14Zm-3,3.5a1,1,0,0,0-1-1H5a1,1,0,0,0,0,2H19A1,1,0,0,0,20,17.5ZM8,20a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2ZM4,12a1,1,0,0,0,1-1,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9,9,0,0,0,3,11,1,1,0,0,0,4,12Z"/>
-  </svg>
-);
 
 function MainApp({ onVerProyecto }) {
   const [modo, setModo] = useState("sombra");
@@ -154,30 +149,28 @@ function MainApp({ onVerProyecto }) {
         ...(isMobile ? { flexWrap: "wrap", padding: "0.5rem 0.85rem", gap: "0.5rem" } : {}),
       }}>
         <span style={{ ...styles.logo, ...(isMobile ? { flex: 1 } : {}) }}>
-          <SunsetLogo />
+          <ValenciaIcon size={17} />
           Valencia Sombra Viva
         </span>
-        <div style={{ display: "flex", gap: "0.45rem", alignItems: "center" }}>
-          <AlertaCalor nivel={resumenAire?.nivel_global} estacionesAlerta={resumenAire?.estaciones_en_alerta} />
-          <button style={styles.mapToggle} onClick={onVerProyecto} title="Ver el proyecto">
-            Proyecto
-          </button>
-          <button
-            style={styles.mapToggle}
-            onClick={() => setMapaOscuro(v => !v)}
-            title={mapaOscuro ? "Cambiar a mapa claro" : "Cambiar a mapa oscuro"}
-          >
-            {mapaOscuro ? "☀️" : "🌙"}
-          </button>
-        </div>
         <nav style={{
           ...styles.nav,
-          ...(isMobile ? { width: "100%", paddingBottom: "0.1rem" } : {}),
+          ...(isMobile ? { width: "100%", paddingBottom: "0.1rem", order: 1 } : {}),
         }}>
           <button style={modo === "sombra"   ? styles.btnActive : styles.btn} onClick={() => setModo("sombra")}>Sombra</button>
           <button style={modo === "ruta"     ? styles.btnActive : styles.btn} onClick={() => setModo("ruta")}>Ruta fresca</button>
           <button style={modo === "refugios" ? styles.btnActive : styles.btn} onClick={() => setModo("refugios")}>Refugios</button>
+          {!isMobile && (
+            <button style={styles.btn} onClick={onVerProyecto}>Sobre el proyecto</button>
+          )}
         </nav>
+        <AlertaCalor nivel={resumenAire?.nivel_global} estacionesAlerta={resumenAire?.estaciones_en_alerta} />
+        <button
+          style={styles.mapToggle}
+          onClick={() => setMapaOscuro(v => !v)}
+          title={mapaOscuro ? "Cambiar a mapa claro" : "Cambiar a mapa oscuro"}
+        >
+          {mapaOscuro ? "☀️" : "🌙"}
+        </button>
       </header>
 
       <div style={{ display: "flex", flex: 1, overflow: "hidden", position: "relative" }}>
@@ -315,7 +308,12 @@ export default function App() {
   };
 
   if (screen === 'landing')  return <LandingPage onEnter={() => setScreen('proyecto')} />;
-  if (screen === 'proyecto') return <ProyectoPage onContinuar={() => setScreen('tutorial')} />;
+  if (screen === 'proyecto') return (
+    <ProyectoPage onContinuar={() => {
+      if (localStorage.getItem('vsv-visited')) { enterApp(); }
+      else { setScreen('tutorial'); }
+    }} />
+  );
   if (screen === 'tutorial') return <Tutorial onDone={enterApp} onSkip={enterApp} />;
   return <MainApp onVerProyecto={() => setScreen('proyecto')} />;
 }
