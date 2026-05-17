@@ -4,6 +4,7 @@ import RutaFresca from "./components/RutaFresca/RutaFresca";
 import AlertaCalor from "./components/AlertaCalor/AlertaCalor";
 import LandingPage from "./components/Landing/LandingPage";
 import Tutorial from "./components/Tutorial/Tutorial";
+import ProyectoPage from "./components/Proyecto/ProyectoPage";
 import { useSol } from "./hooks/useSol";
 import { useRefugios } from "./hooks/useRefugios";
 import { getEstacionesAire, getResumenAire, getIndiceSombra, getRutaFresca } from "./services/api";
@@ -29,7 +30,7 @@ const SunsetLogo = () => (
   </svg>
 );
 
-function MainApp() {
+function MainApp({ onVerProyecto }) {
   const [modo, setModo] = useState("sombra");
   const [mapaOscuro, setMapaOscuro] = useState(false);
   const isMobile = useIsMobile();
@@ -158,6 +159,9 @@ function MainApp() {
         </span>
         <div style={{ display: "flex", gap: "0.45rem", alignItems: "center" }}>
           <AlertaCalor nivel={resumenAire?.nivel_global} estacionesAlerta={resumenAire?.estaciones_en_alerta} />
+          <button style={styles.mapToggle} onClick={onVerProyecto} title="Ver el proyecto">
+            Proyecto
+          </button>
           <button
             style={styles.mapToggle}
             onClick={() => setMapaOscuro(v => !v)}
@@ -310,7 +314,8 @@ export default function App() {
     setScreen('app');
   };
 
-  if (screen === 'landing') return <LandingPage onEnter={() => setScreen('tutorial')} />;
+  if (screen === 'landing')  return <LandingPage onEnter={() => setScreen('proyecto')} />;
+  if (screen === 'proyecto') return <ProyectoPage onContinuar={() => setScreen('tutorial')} />;
   if (screen === 'tutorial') return <Tutorial onDone={enterApp} onSkip={enterApp} />;
-  return <MainApp />;
+  return <MainApp onVerProyecto={() => setScreen('proyecto')} />;
 }
