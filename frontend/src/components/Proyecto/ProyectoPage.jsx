@@ -220,9 +220,10 @@ const Divider = React.forwardRef(function Divider({ label }, ref) {
 });
 
 export const ValenciaIcon = ({ size = 17 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="#FF6B1A">
-    <path d="M23,14a1,1,0,0,1-1,1H2a1,1,0,0,1,0-2H22A1,1,0,0,1,23,14Zm-3,3.5a1,1,0,0,0-1-1H5a1,1,0,0,0,0,2H19A1,1,0,0,0,20,17.5ZM8,20a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2ZM4,12a1,1,0,0,0,1-1,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9,9,0,0,0,3,11,1,1,0,0,0,4,12Z"/>
-    <path d="M10 5.5 L12 9.5 L14 5.5" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg width={size} height={size} viewBox="0 0 24 24">
+    <path fill="#FF6B1A" d="M23,14a1,1,0,0,1-1,1H2a1,1,0,0,1,0-2H22A1,1,0,0,1,23,14Zm-3,3.5a1,1,0,0,0-1-1H5a1,1,0,0,0,0,2H19A1,1,0,0,0,20,17.5ZM8,20a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2ZM4,12a1,1,0,0,0,1-1,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9,9,0,0,0,3,11,1,1,0,0,0,4,12Z"/>
+    <path fill="#0C0C10" d="M5 12 A7 7 0 0 1 19 12 Z"/>
+    <path d="M10.5 7 L12 10.5 L13.5 7" stroke="#FF6B1A" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
